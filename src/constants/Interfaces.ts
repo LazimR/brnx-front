@@ -4,14 +4,14 @@ export interface User{
 }
 
 export interface Provider {
-    id: string;
+    id: number;
     name: string;
     responsible_name: string;
     email: string;
 }
 
 export interface Demand {
-    id: string;
+    id: number;
     id_provider: string;
     status: string;
     title: string;
@@ -21,7 +21,7 @@ export interface Demand {
 }
 
 export interface Actions {
-    id: string;
+    id: number;
     id_demand: string;
     technician_name: string;
     description: string;

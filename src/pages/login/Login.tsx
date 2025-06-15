@@ -2,16 +2,23 @@ import React, { useState, FormEvent } from 'react';
 import Input from '../../components/input/Input';
 import Button from '../../components/button/Button';
 import { post } from '../../services/request/Index'
+import { useDispatch } from 'react-redux';
+import { setUser } from '../../store/slices/User';
+import { useNavigate } from 'react-router-dom';
 
 const Login: React.FC = () => {
+    const navigate = useNavigate();
+    const dispatch = useDispatch();
     const [name, setName] = useState('');
     const [password, setPassword] = useState('');
 
     const handleSubmit = (e: FormEvent) => {
         e.preventDefault();
-        console.log('Name:', name);
-        console.log('Password:', password);
-        const user = post("/login", {name: name, password: password})
+        post("/auth/login", { name:name, password:password }).then((result) => {
+            const { id, name } = result.responseBody
+            dispatch(setUser({id:id, name:name}))
+            navigate("/")
+        })
     };
 
     return (
@@ -21,7 +28,7 @@ const Login: React.FC = () => {
                 
                 <Input 
                     id="name" 
-                    label="Name" 
+                    label="Nome" 
                     type="name" 
                     value={name} 
                     onChange={(e:any) => setName(e.target.value)} 
