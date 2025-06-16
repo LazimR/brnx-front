@@ -10,7 +10,7 @@ interface ErrorResponse {
   error: string;
 }
 
-const API_URL = 'http://localhost:3100'; // substitua pela sua URL da API
+const API_URL = 'http://localhost:3000';
 
 const getHeaders = () => ({
   'Content-Type': 'application/json'
