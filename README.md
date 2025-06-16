@@ -23,7 +23,7 @@ Este projeto é uma plataforma que:
 
 1. Clone o repositório:
 ```bash
-git clone [url-do-repositorio]
+git clone https://github.com/LazimR/brnx-front
 cd brnx-front
 ``` 
 2. Instale as dependências:
